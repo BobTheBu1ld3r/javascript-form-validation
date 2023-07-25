@@ -53,13 +53,23 @@ lastName.addEventListener("input", (event) => {
 });
 
 password.addEventListener("input", (event) => {
-  console.log(password.value);
+  if (passwordConfirm.value == password.value) {
+    passwordConfirm.classList.add("valid");
+    passwordConfirm.classList.remove("error");
+  } else {
+    passwordConfirm.classList.remove("valid");
+    passwordConfirm.classList.add("error");
+    passwordConfirm.nextElementSibling.nextElementSibling.textContent =
+      "Passwords don't match";
+  }
+
   const passwordValidity = checkPasswordValidity(password.value);
   if (passwordValidity.valid) {
     password.classList.remove("error");
     password.classList.add("valid");
   } else {
-    console.log(passwordValidity);
+    password.nextElementSibling.nextElementSibling.textContent =
+      "Does not match requirements";
     password.classList.remove("valid");
     password.classList.add("error");
   }
@@ -76,8 +86,10 @@ function checkPasswordValidity(password) {
 
   if (password.length < 12) {
     passwordValidity.tooShort = true;
+    document.querySelector(".char-constraint").classList.remove("valid");
   } else {
     passwordValidity.tooShort = false;
+    document.querySelector(".char-constraint").classList.add("valid");
   }
 
   if (
@@ -86,8 +98,10 @@ function checkPasswordValidity(password) {
       .some((char) => "abcdefghijklmnopqrstuvwxyz".includes(char))
   ) {
     passwordValidity.missingLowercase = false;
+    document.querySelector(".lowercase-constraint").classList.add("valid");
   } else {
     passwordValidity.missingLowercase = true;
+    document.querySelector(".lowercase-constraint").classList.remove("valid");
   }
 
   if (
@@ -96,14 +110,18 @@ function checkPasswordValidity(password) {
       .some((char) => "ABCDEFGHIJKLMNOPQRSTUVWXYZ".includes(char))
   ) {
     passwordValidity.missingUppercase = false;
+    document.querySelector(".uppercase-constraint").classList.add("valid");
   } else {
     passwordValidity.missingUppercase = true;
+    document.querySelector(".uppercase-constraint").classList.remove("valid");
   }
 
   if (password.split("").some((char) => "0123456789".includes(char))) {
     passwordValidity.missingNumber = false;
+    document.querySelector(".number-constraint").classList.add("valid");
   } else {
     passwordValidity.missingNumber = true;
+    document.querySelector(".number-constraint").classList.remove("valid");
   }
 
   if (
@@ -119,3 +137,15 @@ function checkPasswordValidity(password) {
 
   return passwordValidity;
 }
+
+passwordConfirm.addEventListener("input", (event) => {
+  if (passwordConfirm.value == password.value) {
+    passwordConfirm.classList.add("valid");
+    passwordConfirm.classList.remove("error");
+  } else {
+    passwordConfirm.classList.remove("valid");
+    passwordConfirm.classList.add("error");
+    passwordConfirm.nextElementSibling.nextElementSibling.textContent =
+      "Passwords don't match";
+  }
+});
