@@ -27,6 +27,10 @@ body {
   font-family: "Roboto", sans-serif;
   color: black;
   background-color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 body::after {
@@ -40,6 +44,16 @@ body::after {
   background-position: center center;
   background-size: cover;
   opacity: 0.6;
+  z-index: -10;
+}
+
+.form-container {
+  height: 886px;
+  width: 574px;
+  border-radius: 8px;
+
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 32px 0px;
 }
 
 h5,
