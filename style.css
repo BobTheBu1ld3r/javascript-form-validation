@@ -54,7 +54,7 @@ body::after {
   border-radius: 8px;
 
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 32px 0px;
+  box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 16px 0px;
   padding-left: 64px;
   padding-top: 42px;
 }
@@ -71,7 +71,7 @@ h5,
 h6,
 .h6 {
   font-family: "Roboto";
-  font-size: "20px";
+  font-size: 20px;
   font-weight: 500;
   letter-spacing: 0.15;
   margin: 0;
@@ -96,8 +96,29 @@ h6,
   letter-spacing: 0.25;
 }
 
-.body-1.subtitle-1.password-constraint {
+.body-1.password-constraint {
+  display: block;
   margin-bottom: 4px;
+}
+
+.body-1.password-constraint.valid {
+  color: var(--green-primary);
+}
+
+.body-1.password-constraint::before {
+  content: "";
+  display: inline-block;
+  position: relative;
+  top: 3px;
+  height: 16px;
+  width: 16px;
+  margin-right: 3px;
+  background-image: url(./assets/close-circle.svg);
+}
+
+.body-1.password-constraint.valid::before {
+  background-image: url(./assets/check-circle.svg);
+  color: var(--green-primary);
 }
 
 .button-1 {
@@ -144,6 +165,7 @@ label {
   margin-top: 4px;
   color: var(--red-primary);
   opacity: 0;
+  margin-bottom: 15px;
 }
 
 input.error {
