@@ -1,3 +1,11 @@
+:root {
+  --red-primary: #d92638;
+  --red-input-bg: rgb(235, 80, 80, 0.43);
+  --green-primary: #208337;
+  --grey-secondary: #ccc;
+  --active-input-outline: #2270b412;
+}
+
 html {
   box-sizing: border-box;
 }
