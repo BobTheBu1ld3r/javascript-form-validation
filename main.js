@@ -53,8 +53,15 @@ lastName.addEventListener("input", (event) => {
 });
 
 password.addEventListener("input", (event) => {
-  if (password.validity.valid) {
-    password.classList.remove("");
+  console.log(password.value);
+  const passwordValidity = checkPasswordValidity(password.value);
+  if (passwordValidity.valid) {
+    password.classList.remove("error");
+    password.classList.add("valid");
+  } else {
+    console.log(passwordValidity);
+    password.classList.remove("valid");
+    password.classList.add("error");
   }
 });
 
@@ -67,25 +74,33 @@ function checkPasswordValidity(password) {
     missingNumber: null,
   };
 
-  if (!password.length > 12) {
-    passwordValidity.tooShort = false;
-  } else {
+  if (password.length < 12) {
     passwordValidity.tooShort = true;
+  } else {
+    passwordValidity.tooShort = false;
   }
 
-  if (!password.includes("abcdefghijklmnopqrstuvwxyz")) {
+  if (
+    password
+      .split("")
+      .some((char) => "abcdefghijklmnopqrstuvwxyz".includes(char))
+  ) {
     passwordValidity.missingLowercase = false;
   } else {
     passwordValidity.missingLowercase = true;
   }
 
-  if (!password.includes("ABCDEFGHIJKLMNOPQRSTUVWXYZ")) {
+  if (
+    password
+      .split("")
+      .some((char) => "ABCDEFGHIJKLMNOPQRSTUVWXYZ".includes(char))
+  ) {
     passwordValidity.missingUppercase = false;
   } else {
     passwordValidity.missingUppercase = true;
   }
 
-  if (!password.includes("1234567890")) {
+  if (password.split("").some((char) => "0123456789".includes(char))) {
     passwordValidity.missingNumber = false;
   } else {
     passwordValidity.missingNumber = true;
@@ -101,4 +116,6 @@ function checkPasswordValidity(password) {
   } else {
     passwordValidity.valid = true;
   }
+
+  return passwordValidity;
 }
