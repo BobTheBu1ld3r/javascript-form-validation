@@ -1,9 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 :root {
   --red-primary: #d92638;
   --red-input-bg: rgb(235, 80, 80, 0.43);
   --green-primary: #208337;
   --grey-secondary: #ccc;
   --active-input-outline: #2270b412;
+  --button-bg: #4e3bb1;
+  --purple-bg: #7d83eb;
 }
 
 html {
@@ -18,4 +22,63 @@ html {
 
 body {
   margin: 0;
+  font-family: "Roboto", sans-serif;
+  color: black;
+}
+
+h5,
+.h5 {
+  font-family: "Roboto";
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+h6,
+.h6 {
+  font-family: "Roboto";
+  font-size: "20px";
+  font-weight: 500;
+  letter-spacing: 0.15;
+  margin-bottom: 13px;
+}
+
+.subtitle-1 {
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.25;
+  margin-bottom: 4px;
+}
+
+.subtitle-1.password-constraint {
+  margin-bottom: 11px;
+}
+
+.body-1 {
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.25;
+}
+
+.body-1.subtitle-1.password-constraint {
+  margin-bottom: 4px;
+}
+
+.button-1 {
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 5;
+}
+
+.button {
+  height: 45px;
+  width: 130px;
+  border-radius: 8px;
+  background-color: var(--button-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
