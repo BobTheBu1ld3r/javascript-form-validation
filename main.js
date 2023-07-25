@@ -3,12 +3,24 @@ const middleName = document.querySelector("#middle-name");
 const lastName = document.querySelector("#last-name");
 const password = document.querySelector("#password");
 const passwordConfirm = document.querySelector("#password-confirm");
+const form = document.querySelector("form");
 
 firstName.addEventListener("input", checkFirstName);
 middleName.addEventListener("input", checkMiddleName);
 lastName.addEventListener("input", checkLastName);
 password.addEventListener("input", checkPassword);
 passwordConfirm.addEventListener("input", checkPassword);
+form.addEventListener("submit", (event) => {
+  const isFirstValid = checkFirstName();
+  const isMiddleValid = checkMiddleName();
+  const isLastValid = checkLastName();
+  const isPasswordValid = checkPassword();
+
+  if (!isFirstValid || !isMiddleValid || !isLastValid || !isPasswordValid) {
+    console.log("error");
+    event.preventDefault();
+  }
+});
 
 function checkFirstName() {
   if (firstName.validity.valid) {
@@ -25,6 +37,8 @@ function checkFirstName() {
         "Needs to be more than 2 characters long";
     }
   }
+
+  return firstName.validity.valid;
 }
 
 function checkMiddleName() {
@@ -39,6 +53,8 @@ function checkMiddleName() {
         "Needs to be more than 2 characters long";
     }
   }
+
+  return middleName.validity.valid;
 }
 
 function checkLastName() {
@@ -56,6 +72,8 @@ function checkLastName() {
         "Needs to be more than 2 characters long";
     }
   }
+
+  return lastName.validity.valid;
 }
 
 function checkPassword() {
@@ -79,6 +97,8 @@ function checkPassword() {
     password.classList.remove("valid");
     password.classList.add("error");
   }
+
+  return passwordValidity.valid || passwordConfirm.value == password.value;
 }
 
 function checkPasswordValidity(password) {
