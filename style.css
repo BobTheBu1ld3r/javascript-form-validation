@@ -2,10 +2,11 @@
 
 :root {
   --red-primary: #d92638;
-  --red-input-bg: rgb(235, 80, 80, 0.43);
+  --red-input-bg: rgb(235, 80, 80, 0.4);
   --green-primary: #208337;
   --grey-secondary: #ccc;
-  --active-input-outline: #2270b412;
+  --active-input-outline: #2270b4;
+  --active-input-bg: #2270b412;
   --button-bg: #4e3bb1;
   --purple-bg: #7d83eb;
 }
@@ -54,6 +55,8 @@ body::after {
 
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 32px 0px;
+  padding-left: 64px;
+  padding-top: 42px;
 }
 
 h5,
@@ -61,6 +64,7 @@ h5,
   font-family: "Roboto";
   font-size: 24px;
   font-weight: 400;
+  margin: 0;
   margin-bottom: 30px;
 }
 
@@ -70,6 +74,7 @@ h6,
   font-size: "20px";
   font-weight: 500;
   letter-spacing: 0.15;
+  margin: 0;
   margin-bottom: 13px;
 }
 
@@ -78,7 +83,6 @@ h6,
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0.25;
-  margin-bottom: 4px;
 }
 
 .subtitle-1.password-constraint {
@@ -114,10 +118,57 @@ h6,
 }
 
 input {
+  display: inline-block;
   width: 453px;
   height: 41px;
   border: none;
   border: 2px solid var(--grey-secondary);
   border-radius: 4px;
   padding: 11px 14px;
+}
+
+input:active,
+input:focus,
+input:focus-visible {
+  background-color: var(--active-input-bg);
+  border: 2px solid var(--active-input-outline);
+  outline: none;
+}
+
+label {
+  margin-bottom: 4px;
+  display: block;
+}
+
+.error-text {
+  margin-top: 4px;
+  color: var(--red-primary);
+  opacity: 0;
+}
+
+input.error {
+  border: 2px solid var(--red-primary);
+}
+
+input.error + .icon-display {
+  display: inline-block;
+  position: relative;
+  right: 30px;
+  top: 2px;
+  height: 16px;
+  width: 16px;
+  background-image: url(./assets/close-circle.svg);
+  background-size: cover;
+  background-position: center center;
+}
+
+input.error:active,
+input.error:focus,
+input.error:focus-visible {
+  background-color: var(--red-input-bg);
+  outline: none;
+}
+
+input.error ~ .error-text {
+  opacity: 1;
 }
