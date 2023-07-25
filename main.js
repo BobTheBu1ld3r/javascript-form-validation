@@ -4,7 +4,13 @@ const lastName = document.querySelector("#last-name");
 const password = document.querySelector("#password");
 const passwordConfirm = document.querySelector("#password-confirm");
 
-firstName.addEventListener("input", (event) => {
+firstName.addEventListener("input", checkFirstName);
+middleName.addEventListener("input", checkMiddleName);
+lastName.addEventListener("input", checkLastName);
+password.addEventListener("input", checkPassword);
+passwordConfirm.addEventListener("input", checkPassword);
+
+function checkFirstName() {
   if (firstName.validity.valid) {
     firstName.classList.remove("error");
     firstName.classList.add("valid");
@@ -19,9 +25,9 @@ firstName.addEventListener("input", (event) => {
         "Needs to be more than 2 characters long";
     }
   }
-});
+}
 
-middleName.addEventListener("input", (event) => {
+function checkMiddleName() {
   if (middleName.validity.valid) {
     middleName.classList.remove("error");
     middleName.classList.add("valid");
@@ -33,9 +39,9 @@ middleName.addEventListener("input", (event) => {
         "Needs to be more than 2 characters long";
     }
   }
-});
+}
 
-lastName.addEventListener("input", (event) => {
+function checkLastName() {
   if (lastName.validity.valid) {
     lastName.classList.remove("error");
     lastName.classList.add("valid");
@@ -50,9 +56,9 @@ lastName.addEventListener("input", (event) => {
         "Needs to be more than 2 characters long";
     }
   }
-});
+}
 
-password.addEventListener("input", (event) => {
+function checkPassword() {
   if (passwordConfirm.value == password.value) {
     passwordConfirm.classList.add("valid");
     passwordConfirm.classList.remove("error");
@@ -73,7 +79,7 @@ password.addEventListener("input", (event) => {
     password.classList.remove("valid");
     password.classList.add("error");
   }
-});
+}
 
 function checkPasswordValidity(password) {
   const passwordValidity = {
@@ -137,15 +143,3 @@ function checkPasswordValidity(password) {
 
   return passwordValidity;
 }
-
-passwordConfirm.addEventListener("input", (event) => {
-  if (passwordConfirm.value == password.value) {
-    passwordConfirm.classList.add("valid");
-    passwordConfirm.classList.remove("error");
-  } else {
-    passwordConfirm.classList.remove("valid");
-    passwordConfirm.classList.add("error");
-    passwordConfirm.nextElementSibling.nextElementSibling.textContent =
-      "Passwords don't match";
-  }
-});
