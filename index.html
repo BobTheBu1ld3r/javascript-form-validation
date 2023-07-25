@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
     <title>JavaScript Form Validation</title>
+    <script src="./main.js" defer></script>
   </head>
   <body>
     <div class="form-container">
       <h5>Create an account with us</h5>
-      <form action="#">
+      <form action="#" novalidate>
         <div>
           <label for="first-name" class="subtitle-1">First Name*</label>
           <input
@@ -51,7 +52,7 @@
         </div>
         <h6>Password</h6>
         <div class="subtitle-1 password-constraint">The password must:</div>
-        <div class="body-1 password-constraint valid char-constraint">
+        <div class="body-1 password-constraint char-constraint">
           Be at least 12 characters long
         </div>
         <div class="body-1 password-constraint lowercase-constraint">
