@@ -150,16 +150,19 @@ input.error {
   border: 2px solid var(--red-primary);
 }
 
-input.error + .icon-display {
+.icon-display {
   display: inline-block;
   position: relative;
   right: 30px;
   top: 2px;
   height: 16px;
   width: 16px;
-  background-image: url(./assets/close-circle.svg);
   background-size: cover;
   background-position: center center;
+}
+
+input.error + .icon-display {
+  background-image: url(./assets/close-circle.svg);
 }
 
 input.error:active,
@@ -171,4 +174,12 @@ input.error:focus-visible {
 
 input.error ~ .error-text {
   opacity: 1;
+}
+
+input.valid {
+  border: 2px solid var(--green-primary);
+}
+
+input.valid + .icon-display {
+  background-image: url(./assets/check-circle.svg);
 }
