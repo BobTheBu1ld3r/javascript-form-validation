@@ -163,3 +163,18 @@ function checkPasswordValidity(password) {
 
   return passwordValidity;
 }
+
+const passwordIcon = password.nextElementSibling;
+const passwordConfirmIcon = passwordConfirm.nextElementSibling;
+
+passwordIcon.addEventListener("click", togglePasswordVisibility);
+passwordConfirmIcon.addEventListener("click", togglePasswordVisibility);
+
+function togglePasswordVisibility(event) {
+  const inputElement = event.target.previousElementSibling;
+  if (inputElement.type === "password") {
+    inputElement.type = "text";
+  } else {
+    inputElement.type = "password";
+  }
+}
