@@ -212,3 +212,13 @@ input.valid + .icon-display {
 label[for="password"] {
   margin-top: 29px;
 }
+
+input#password[type="password"] + .icon-display,
+input#password-confirm[type="password"] + .icon-display {
+  background-image: url(./assets/eye.svg);
+}
+
+input#password[type="text"] + .icon-display,
+input#password-confirm[type="text"] + .icon-display {
+  background-image: url(./assets/eye-off.svg);
+}
